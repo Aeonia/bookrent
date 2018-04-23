@@ -37,5 +37,10 @@ class Book extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function borrower()
+    {
+        return $this->belongsTo('App\User', borrower_id);
+    }
+
     
 }

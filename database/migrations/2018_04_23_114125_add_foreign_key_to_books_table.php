@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyBooksTable extends Migration
+class AddForeignKeyToBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class AddForeignKeyBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->integer('borrower_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('borrower_id')->references('id')->on('users');
         });
     }
 
@@ -28,7 +28,7 @@ class AddForeignKeyBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropForeign('user_id_foreign');
+            $table->dropForeign('borrower_id_foreign');
         });
     }
 }

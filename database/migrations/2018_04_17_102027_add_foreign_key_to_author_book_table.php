@@ -29,8 +29,9 @@ class AddForeignKeyToAuthorBookTable extends Migration
      */
     public function down()
     {
-        Schema::table('author_book', function (Blueprint $table) {
-            //
+        Schema::table('author_books', function (Blueprint $table) {
+            $table->dropForeign('author_id_foreign');
+            $table->dropForeign('book_id_foreign');
         });
     }
 }
