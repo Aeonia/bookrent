@@ -14,7 +14,7 @@ class AddForeignKeyToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->integer('borrower_id')->unsigned();
+            $table->integer('borrower_id')->unsigned()->nullable();
 
             $table->foreign('borrower_id')->references('id')->on('users');
         });

@@ -23,7 +23,7 @@ Route::get('/authors/create', 'AuthorController@create')->name('author.create');
 Route::post('/authors/create', 'AuthorController@store')->name('author.store');
 
 //Book
-Route::get('/books', 'BookController@index')->name('book.index');
+Route::get('/books', 'BookController@index')->middleware('IsUser')->name('book.index');
 Route::get('/books/create', 'BookController@create')->name('book.create');
 Route::post('/books/create', 'BookController@store')->name('book.store');
 Route::get('/books/show/{book}', 'BookController@show')->name('book.show');

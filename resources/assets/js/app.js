@@ -20,3 +20,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+
+Vue.component('selected');
+
+new Vue({
+    el: '#selected',
+    data: {
+      selected: ''
+    }
+  })

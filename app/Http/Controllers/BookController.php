@@ -10,6 +10,7 @@ use App\AuthorBook;
 use Illuminate\Support\Facades\Auth;
 use AuthorController;
 
+/*php artisan make:model Book -a => create controller, model, migration, factory*/
 
 class BookController extends Controller
 {
@@ -22,6 +23,7 @@ class BookController extends Controller
     {    
         $books = Auth::user()->books;
         return view('index', compact('books'));
+    /*compact return an array of the values of the variable $books*/
     }
 
     /**
@@ -45,6 +47,8 @@ class BookController extends Controller
     {   
         
         //$book = new Book();
+        /*If the validation rules pass, your code will keep executing normally; however, if validation fails, an exception will be thrown and the proper error response will automatically be sent back to the user. In the case of a traditional HTTP request, a redirect response will be generated, while a JSON response will be sent for AJAX requests.*If the validation rules pass, your code will keep executing normally; however, if validation fails, an exception will be thrown and the proper error response will automatically be sent back to the user. In the case of a traditional HTTP request, a redirect response will be generated, while a JSON response will be sent for AJAX requests.*/
+        /*this sur l'instance bookcontroller de controller*/
         $data = $this->validate($request, [
             'name'=>'required',
             'user_id'=>'required',
@@ -63,8 +67,10 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    /*find($id) takes an id and returns a single model. If no matching model exist, it returns null.
+    findOrFail($id) takes an id and returns a single model. If no matching model exist, it throws an error. */
     {
-        $book =  Book::findOrFail($id);
+        $book = Book::findOrFail($id);
         return view('show', compact('book'));
     }
 

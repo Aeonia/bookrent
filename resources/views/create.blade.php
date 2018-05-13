@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -28,13 +29,14 @@
                                 <div class="field">
                                     <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
                                 </div>
-
-                                <select class="form-control" name="author" id="author">
+                                <div id="selected">
+                                <select v-model="selected" class="form-control" name="author" id="author">
                                     @foreach ($authors as $author)
-                                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                    <option v-bind:value="{{ $author->id }}">{{ $author->name }}</option>
                                     @endforeach
                                 </select>
-                            
+                                <span>Selected: @{{ selected }} </span>
+                                </div>
                                 <input class="ui fluid button teal" type="submit" name="add_livre" value="Ajouter">
                         </form>      
 
@@ -45,6 +47,6 @@
         </div>
     </div>
 </div>
-@endsection
+
 
 
