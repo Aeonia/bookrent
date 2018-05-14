@@ -31,4 +31,7 @@ Route::get('/books/edit/{book}', 'BookController@edit')->name('book.edit');
 Route::put('/books/edit/{book}', 'BookController@update')->name('book.update');
 Route::post('/books/edit/{book}/destroy', 'BookController@destroy')->name('book.destroy');
 
+//Role
+Route::get('/roles', 'RoleController@create')->name('role.create');
+Route::post('/roles', 'RoleController@attachRole')->name('role.attachRole');
 

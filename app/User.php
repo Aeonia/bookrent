@@ -32,6 +32,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Book');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role')
+                    ->as('usertype')
+                    ->withTimestamps();
+    }
+
     /**
      * Find all user without current logged user
      *
