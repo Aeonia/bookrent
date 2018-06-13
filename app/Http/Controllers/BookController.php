@@ -10,7 +10,6 @@ use App\AuthorBook;
 use Illuminate\Support\Facades\Auth;
 use AuthorController;
 
-/*php artisan make:model Book -a => create controller, model, migration, factory*/
 
 class BookController extends Controller
 {
@@ -19,6 +18,8 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //return a view listing all the user's books
     public function index()
     {    
         $books = Auth::user()->books;
@@ -31,6 +32,7 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //return a view to add a new book and/or a new author
     public function create()
     {
         $authors = Author::all();
@@ -43,6 +45,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //add a new book and/or a new author
     public function store(Request $request)
     {   
         
@@ -57,7 +60,7 @@ class BookController extends Controller
         $book = Book::create($data); //remplace $book = new Book(); et $book->saveBook($data);
         $book->authors()->attach($request->author);
         //$book->saveBook($data);
-        return redirect()->back();
+        return redirect()->route('book.index');
     }
 
     /**
@@ -66,6 +69,8 @@ class BookController extends Controller
      * @param  Book $book
      * @return \Illuminate\Http\Response
      */
+
+     //show the view with a specific book information
     public function show($id)
     /*find($id) takes an id and returns a single model. If no matching model exist, it returns null.
     findOrFail($id) takes an id and returns a single model. If no matching model exist, it throws an error. */
@@ -81,6 +86,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //show a view to edit a specifi book
     public function edit($id)
     {
         $authors = Author::all();
@@ -96,6 +103,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //save modification for a specific book
     public function update(Request $request, $id)
     {
         $book = Book::findOrFail($id);
@@ -105,9 +114,10 @@ class BookController extends Controller
         ]);
     
         $book->update($data); //remplace $book = new Book(); et $book->saveBook($data);
+        $book->authors()->detach();
         $book->authors()->attach($request->author);
         //$book->saveBook($data);
-        return redirect()->back();
+        return redirect()->route('book.index');
     }
 
     /**
@@ -116,6 +126,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //delete a specific book
     public function destroy($id)
     {
 

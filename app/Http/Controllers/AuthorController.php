@@ -7,6 +7,7 @@ use App\Book;
 use App\User;
 use App\AuthorBook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthorController extends Controller
@@ -16,6 +17,8 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //show all the authors available in the app
     public function index()
     {
         $authors = Author::all();
@@ -27,6 +30,8 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //return view to add an author to the app
     public function create()
     {
         $authors = Author::all();
@@ -39,6 +44,8 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //add the new author to the app
     public function store(Request $request)
     {
         $data = $this->validate($request, [
