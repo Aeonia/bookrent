@@ -32,7 +32,7 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\User');
     }

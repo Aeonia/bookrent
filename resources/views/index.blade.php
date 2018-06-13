@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Bienvenue à toi lecteur !</div>
+                <div class="card-header">Hello dear reader !</div>
 
                 <div class="card-body">
                     <div class="row justify-content-center">
