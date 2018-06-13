@@ -13,7 +13,7 @@
                             <div class="btn-group-vertical">
                                 <a href="{{ route('book.index') }}">See your books</a> <!--récupère automatiquement l'id de l'objet Book)-->
                                 <a href="{{ route('book.create') }}">Add a new book !</a> 
-                                <a href="{{ route('author.index') }}">The authors you've read from</a> 
+                                <a href="{{ route('author.index') }}">Authors available in the Library</a> 
                             </div>
                         </div>
                     </div>
