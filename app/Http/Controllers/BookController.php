@@ -71,7 +71,8 @@ class BookController extends Controller
     findOrFail($id) takes an id and returns a single model. If no matching model exist, it throws an error. */
     {
         $book = Book::findOrFail($id);
-        return view('show', compact('book'));
+        $authors = $book->authors;
+        return view('show', compact('book','authors'));
     }
 
     /**

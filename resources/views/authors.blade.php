@@ -5,17 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Bienvenue à toi lecteur !</div>
+                <div class="card-header">Your authors</div>
 
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             @foreach ($authors as $author)
-                                <p>This is {{ $author->name }}</p>
+                                <p>Name : {{ $author->name }}</p>
+                                <p>Books : </p>
+                                <ul>
                                 @foreach($author->books as $book)
-                                    <p>{{ $book->name }}</p>
+                                    <li>{{ $book->name }}</li>
+                                    <a href="{{ route('book.show', [$book]) }}">Read more</a> <!--récupère automatiquement l'id de l'objet Book)-->
                                 @endforeach
-                                <a href="{{ route('book.show', [$book]) }}"></a> <!--récupère automatiquement l'id de l'objet Book)-->
+                                </ul>
                             @endforeach
                         </div>
                     </div>

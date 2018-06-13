@@ -15,10 +15,11 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-
+//User
+Route::get('/profil', 'ProfilController@index')->name('profil');
 
 //Author
-Route::get('/authors', 'AuthorController@index')->name('index');
+Route::get('/authors', 'AuthorController@index')->name('author.index');
 Route::get('/authors/create', 'AuthorController@create')->name('author.create');
 Route::post('/authors/create', 'AuthorController@store')->name('author.store');
 
